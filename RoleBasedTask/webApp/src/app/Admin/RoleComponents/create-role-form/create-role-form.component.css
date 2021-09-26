@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  .form-field{
+    display: block
+}
+
+.module-border{
+  border: 2 px solid gray !important;
+}
+
+.form-border{
+  border:solid 1px #888888;
+  box-shadow: 1px 1px #888888 ;
+}

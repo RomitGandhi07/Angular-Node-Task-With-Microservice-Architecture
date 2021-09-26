@@ -1,0 +1,42 @@
+
+<mat-sidenav-container class="full-height" autosize="true">
+    <mat-sidenav mode="side" opened>
+
+        <div mat-menu-item class="with-icon padded" (click)="$event.stopPropagation()">
+            <mat-icon matTooltip="rapidops" position="end"><img style="height: 40px;width: 35px;" src="https://media-exp1.licdn.com/dms/image/C510BAQH1Y9ukOgvg4Q/company-logo_200_200/0/1547791871301?e=2159024400&v=beta&t=pHNkeFQSCXtQVVB92wYMIiEdiegTHpsX72d243aDrKg" alt="image"/></mat-icon>&nbsp;
+            <span [hidden]="collapse" class="ml-3 mt-2"><b>rapid</b>ops</span>
+        </div>
+        <div mat-menu-item *ngFor="let i of sideMenu" [routerLink]="['/', i.route]" class="with-icon padded"
+            (click)="$event.stopPropagation()">
+            <mat-icon [matTooltip]="i.toolTip" position="end"><i class="fa fa-{{i.icon}}" aria-hidden="true"></i>
+            </mat-icon>&nbsp;
+            <span [hidden]="collapse" class="ml-3 mt-2">{{ i.name }}</span>
+        </div>
+
+        <div mat-menu-item class="with-icon padded" (click)="$event.stopPropagation()">
+            <mat-icon matTooltip="Admin" position="end"><i class="fas fa-user-cog"></i></mat-icon>&nbsp;
+            <span [hidden]="collapse" class="ml-3 mt-2">{{ "Admin" }}</span>
+        </div>
+        <!-- <div mat-menu-item   class="with-icon padded" (click)="$event.stopPropagation()">
+                <mat-icon matTooltip="Logout" position="end"><i class="fas fa-sign-out-alt"></i></mat-icon>&nbsp;
+                <span [hidden]="collapse" class="ml-3 mt-2">{{ "Logout" }}</span>
+            </div>  -->
+        <div mat-menu-item class="with-icon padded" (click)="userLogout()" (click)="$event.stopPropagation()">
+            <mat-icon matTooltip="Logout" position="end"><i  class="fas fa-sign-out-alt"></i></mat-icon>&nbsp;
+            <span [hidden]="collapse" class="ml-3 mt-2">{{ "Logout" }}</span>
+        </div>
+        <div class="ml-2 mt-1" *ngIf="!collapse" (click)="toggleSidebar()" (click)="$event.stopPropagation()">
+            <mat-icon matTooltip="collapse" position="end"><i  class="fa fa-arrow-left" aria-hidden="true"></i></mat-icon>&nbsp;
+            <span [hidden]="collapse" class="ml-1 mt-2">{{ "Collapse" }}</span>
+        </div>
+        <div *ngIf="collapse" mat-menu-item class="with-icon padded" (click)="toggleSidebar()" (click)="$event.stopPropagation()">
+            <mat-icon matTooltip="collapse" class="ml-1 mt-2" position="end"><i  class="fa fa-expand" aria-hidden="true"></i></mat-icon>&nbsp;
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="padded">
+         <router-outlet></router-outlet> 
+    
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
